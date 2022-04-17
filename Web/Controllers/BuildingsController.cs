@@ -1,4 +1,3 @@
-using ASPNETCoreApp;
 using ASPNETCoreApp.Models.DTOs;
 using ASPNETCoreApp.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +23,7 @@ namespace Web.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById([FromRoute] int id)
+        public async Task<IActionResult> GetById(int id)
         {
             var response = await _buildingService.GetById(id);
             if (response.Data == null) return NotFound(response);
@@ -50,7 +49,7 @@ namespace Web.Controllers
         }
 
         [HttpDelete("delete/{id}")]
-        public async Task<IActionResult> Remove([FromRoute] int id)
+        public async Task<IActionResult> Remove(int id)
         {
             var response = await _buildingService.Remove(id);
             if (response == null) return NotFound(response);

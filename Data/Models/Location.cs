@@ -8,6 +8,6 @@ public class Location
     public double CeilingHeight { get; set; }
     public int BuildingId { get; set; }
     [JsonIgnore]
-    public virtual Building? Building { get; set; }
-    public virtual ICollection<Room> Rooms { get; set; } = new List<Room>();
+    public Building? Building { get; set; }
+    public ICollection<Room> Rooms { get; set; } = new List<Room>();
 }

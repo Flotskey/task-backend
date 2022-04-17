@@ -11,5 +11,5 @@ public class Department
 
     public int FacultyId { get; set; }
     [JsonIgnore]
-    public virtual Faculty? Faculty { get; set; }
+    public Faculty? Faculty { get; set; }
 }

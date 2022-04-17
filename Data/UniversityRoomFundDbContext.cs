@@ -21,13 +21,12 @@ public class UniversityRoomFundDbContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder
-            .UseLazyLoadingProxies()
             .UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=university_room_fund;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False")
             .EnableSensitiveDataLogging();
     }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
-        _ = new DataSeeder(builder);
+        DataSeeder.Seed(builder);
     }
 }

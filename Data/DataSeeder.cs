@@ -6,9 +6,8 @@ namespace ASPNETCoreApp;
 
 public class DataSeeder
 {
-    public DataSeeder(ModelBuilder builder)
+    public static void Seed(ModelBuilder builder)
     {
-
         builder.Entity<Building>().HasData(
             new Building() { Id = 1, Name = "2-й учебный корпус" },
             new Building() { Id = 2, Name = "4-й учебный корпус" }
@@ -47,7 +46,7 @@ public class DataSeeder
         builder.Entity<Room>().HasData(GenerateRooms(5, 5, 165, 181));
     }
 
-    private List<Room> GenerateRooms(int locationId, int departmentId, int startingRoomNumber, int endingRoomNumber)
+    private static List<Room> GenerateRooms(int locationId, int departmentId, int startingRoomNumber, int endingRoomNumber)
     {
         var random = new Random();
         var rooms = new List<Room>();

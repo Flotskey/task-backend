@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "sBpyv9ftbJAlMjDwLIMyBko2zfipsqIAKcVj/t6dx90wm3wCGIUsH5KFFOXfFJSx4K6QW4CaMlFM61qeeoar5w==",
+  "dgSpecHash": "i+zNnZi2GWkXigESQ0VIC37ATIFmP8qgcb+7JbztFWsU43fy22mi17qCXhVQdvH+34ASknathvHGEudWaQ0NBg==",
   "success": true,
   "projectFilePath": "D:\\Coding\\Projects\\csharp\\EFCoreConsoleApp\\Web\\Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\slovv\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
     "C:\\Users\\slovv\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\slovv\\.nuget\\packages\\mapster\\7.3.0\\mapster.7.3.0.nupkg.sha512",
+    "C:\\Users\\slovv\\.nuget\\packages\\mapster.core\\1.2.0\\mapster.core.1.2.0.nupkg.sha512",
     "C:\\Users\\slovv\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\slovv\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",
     "C:\\Users\\slovv\\.nuget\\packages\\messagepackanalyzer\\2.1.152\\messagepackanalyzer.2.1.152.nupkg.sha512",

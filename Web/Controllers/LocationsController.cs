@@ -24,10 +24,10 @@ namespace Web.Controllers
             else return BadRequest(response);
         }
 
-        [HttpDelete("delete")]
-        public async Task<IActionResult> Remove([FromBody] RemoveLocationDTO removeLocationDTO)
+        [HttpDelete("delete/{buildingId}")]
+        public async Task<IActionResult> Remove([FromRoute] int buildingId)
         {
-            var response = await _locationService.Remove(removeLocationDTO.BuildingId);
+            var response = await _locationService.Remove(buildingId);
             if (response.Success) return Ok(response);
             else return NotFound(response);
         }

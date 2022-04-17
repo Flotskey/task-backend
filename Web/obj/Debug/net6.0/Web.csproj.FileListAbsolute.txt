@@ -265,3 +265,5 @@ D:\Coding\Projects\csharp\EFCoreConsoleApp\Web\obj\Debug\net6.0\ref\Web.dll
 D:\Coding\Projects\csharp\EFCoreConsoleApp\Web\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
 D:\Coding\Projects\csharp\EFCoreConsoleApp\Web\bin\Debug\net6.0\Castle.Core.dll
 D:\Coding\Projects\csharp\EFCoreConsoleApp\Web\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Proxies.dll
+D:\Coding\Projects\csharp\EFCoreConsoleApp\Web\bin\Debug\net6.0\Mapster.dll
+D:\Coding\Projects\csharp\EFCoreConsoleApp\Web\bin\Debug\net6.0\Mapster.Core.dll

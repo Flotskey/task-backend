@@ -16,14 +16,26 @@ public class BuildingService : IBuildingService
 
     public async Task<Response<List<Building>>> GetAll()
     {
-        var buildings = await _context.Buildings.ToListAsync() ?? new List<Building>();
+        var buildings = await _context.Buildings
+            .Include(b => b.Faculties)
+            .ThenInclude(f => f.Departments)
+            .Include(b => b.Locations)
+            .ThenInclude(l => l.Rooms)
+            .ToListAsync() ?? new List<Building>();
+
         return new Response<List<Building>>() { Data = buildings };
     }
 
     public async Task<Response<Building>> GetById(int id)
     {
         var response = new Response<Building>();
-        var building = await _context.Buildings.FindAsync(id);
+        var building = await _context.Buildings
+            .Include(b => b.Faculties)
+            .ThenInclude(f => f.Departments)
+            .Include(b => b.Locations)
+            .ThenInclude(l => l.Rooms)
+            .FirstOrDefaultAsync(b => b.Id == id);
+
         if (building == null)
         {
             response.ErrorMessage = "This building doesn't exist";

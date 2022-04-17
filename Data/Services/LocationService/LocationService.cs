@@ -51,7 +51,7 @@ public class LocationService : ILocationService
 
         if (location == null)
         {
-            response.ErrorMessage = "This floor doesn't exist";
+            response.ErrorMessage = "This building doesn't exist";
             response.Success = false;
         }
         else

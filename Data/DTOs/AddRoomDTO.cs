@@ -1,21 +1,15 @@
 ﻿using ASPNETCoreApp.Enums;
-using System.Text.Json.Serialization;
 
-namespace ASPNETCoreApp.Models;
+namespace ASPNETCoreApp.DTOs;
 
-public class Room
+public class AddRoomDTO
 {
-    public int Id { get; set; }
     public int Number { get; set; }
     public double Width { get; set; }
     public double Length { get; set; }
     public RoomPurpose Purpose { get; set; } = RoomPurpose.Study;
     public RoomType Type { get; set; } = RoomType.Basic;
-
     public int LocationId { get; set; }
-    [JsonIgnore]
-    public Location? Location { get; set; }
-
     public int? DepartmentId { get; set; }
-    public Department? Department { get; set; }
 }
+ 
