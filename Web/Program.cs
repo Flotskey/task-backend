@@ -7,6 +7,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("myPolicy", policy =>
+    {
+        policy.WithOrigins("http://localhost:8080")
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
+});
+
 builder.Services.AddDbContext<UniversityRoomFundDbContext>();
 
 builder.Services.AddScoped<IBuildingService, BuildingService>();
@@ -23,8 +33,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+else
+{
+    app.UseHttpsRedirection();
+}
 
-app.UseHttpsRedirection();
+app.UseCors("myPolicy");
 
 app.UseAuthorization();
 

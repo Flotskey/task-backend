@@ -27,6 +27,10 @@ public class UniversityRoomFundDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
+        builder.Entity<Room>()
+            .Property(r => r.Area)
+            .HasComputedColumnSql("[Width]*[Length]", stored: true);
+
         DataSeeder.Seed(builder);
     }
 }

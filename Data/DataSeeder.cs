@@ -15,12 +15,12 @@ public class DataSeeder
 
         builder.Entity<Location>().HasData(
 
-            new Location() { Id = 1, BuildingId = 1, CeilingHeight = 3.5, Floor = 1 },
-            new Location() { Id = 2, BuildingId = 1, CeilingHeight = 3, Floor = 2 },
-            new Location() { Id = 3, BuildingId = 1, CeilingHeight = 3, Floor = 3 },
+            new Location() { Id = 11, BuildingId = 1, CeilingHeight = 3.5, Floor = 1 },
+            new Location() { Id = 22, BuildingId = 1, CeilingHeight = 3, Floor = 2 },
+            new Location() { Id = 33, BuildingId = 1, CeilingHeight = 3, Floor = 3 },
 
-            new Location() { Id = 4, BuildingId = 2, CeilingHeight = 3, Floor = 1 },
-            new Location() { Id = 5, BuildingId = 2, CeilingHeight = 3, Floor = 2 }
+            new Location() { Id = 44, BuildingId = 2, CeilingHeight = 3, Floor = 1 },
+            new Location() { Id = 55, BuildingId = 2, CeilingHeight = 3, Floor = 2 }
             );
 
 
@@ -38,12 +38,12 @@ public class DataSeeder
             new Department() { Id = 5, FacultyId = 2, Name = "Just English" }
             );
 
-        builder.Entity<Room>().HasData(GenerateRooms(1, 1, 1, 32));
-        builder.Entity<Room>().HasData(GenerateRooms(2, 2, 33, 65));
-        builder.Entity<Room>().HasData(GenerateRooms(3, 3, 66, 131));
+        builder.Entity<Room>().HasData(GenerateRooms(11, 1, 1, 32));
+        builder.Entity<Room>().HasData(GenerateRooms(22, 2, 33, 65));
+        builder.Entity<Room>().HasData(GenerateRooms(33, 3, 66, 131));
 
-        builder.Entity<Room>().HasData(GenerateRooms(4, 4, 132, 164));
-        builder.Entity<Room>().HasData(GenerateRooms(5, 5, 165, 181));
+        builder.Entity<Room>().HasData(GenerateRooms(44, 4, 132, 164));
+        builder.Entity<Room>().HasData(GenerateRooms(55, 5, 165, 181));
     }
 
     private static List<Room> GenerateRooms(int locationId, int departmentId, int startingRoomNumber, int endingRoomNumber)

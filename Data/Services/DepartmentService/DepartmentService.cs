@@ -8,10 +8,12 @@ namespace ASPNETCoreApp.Services;
 
 public class DepartmentService : IDepartmentService
 {
-    private UniversityRoomFundDbContext _context;
-    public DepartmentService(UniversityRoomFundDbContext context)
+    private readonly UniversityRoomFundDbContext _context;
+    private readonly ILogger<Department> _logger;
+    public DepartmentService(UniversityRoomFundDbContext context, ILogger<Department> logger)
     {
         _context = context;
+        _logger = logger;
     }
     public async Task<Response<List<Department>>> Add(AddDepartmentDTO addDepartmentDTO)
     {
@@ -21,8 +23,16 @@ public class DepartmentService : IDepartmentService
         if (faculty == null || department != null)
         {
             response.Success = false;
-            if (faculty == null) response.ErrorMessage = "This faculty doesn't exist";
-            else if (department != null) response.ErrorMessage = "This deparment's name is already taken";
+            if (faculty == null)
+            {
+                response.ErrorMessage = "This faculty doesn't exist";
+                _logger.LogError($"Error adding department Id: {addDepartmentDTO.Name} FacultyId: {addDepartmentDTO.FacultyId} faculty not found");
+            }
+            else if (department != null)
+            {
+                response.ErrorMessage = "This deparment's name is already taken";
+                _logger.LogError($"Error adding department Id: {addDepartmentDTO.Name} FacultyId: {addDepartmentDTO.FacultyId} department's name already taken");
+            }
         }
         else
         {
@@ -31,6 +41,8 @@ public class DepartmentService : IDepartmentService
 
             _context.Departments.Add(newDepartment);
             await _context.SaveChangesAsync();
+
+            _logger.LogInformation($"Added department Id: {newDepartment.Id} Name: {newDepartment.Name} FacultyId: {newDepartment.FacultyId}");
 
             response.Data = newFaculty.Departments.ToList();
         }
@@ -46,6 +58,7 @@ public class DepartmentService : IDepartmentService
         {
             response.Success = false;
             response.ErrorMessage = "This department doesn't exist";
+            _logger.LogError($"Error updating department Id: {department.Name} FacultyId: {department.FacultyId} not found");
         }
         else
         {
@@ -54,6 +67,8 @@ public class DepartmentService : IDepartmentService
 
             _context.Departments.Update(newDepartment);
             await _context.SaveChangesAsync();
+
+            _logger.LogInformation($"Updated department Id: {newDepartment.Id} Name: {newDepartment.Name} FacultyId: {newDepartment.FacultyId}");
 
             response.Data = newDepartment;
         }
@@ -70,11 +85,14 @@ public class DepartmentService : IDepartmentService
         {
             response.Success = false;
             response.ErrorMessage = "This department doesn't exist";
+            _logger.LogError($"Error deleting department Id: {department.Name} FacultyId: {department.FacultyId} not found");
         }
         else
         {
             _context.Departments.Remove(department);
             await _context.SaveChangesAsync();
+
+            _logger.LogInformation($"Removed department Id: {department.Id} Name: {department.Name} FacultyId: {department.FacultyId}");
 
             var faculty = await _context.Faculties.Include(f => f.Departments).FirstOrDefaultAsync(f => f.Id == department.FacultyId);
             response.Data = faculty.Departments.ToList();

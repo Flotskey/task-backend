@@ -2,17 +2,19 @@
 using ASPNETCoreApp.Models;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace ASPNETCoreApp.Services;
 
 public class RoomService : IRoomService
 {
 
-    private UniversityRoomFundDbContext _context;
-
-    public RoomService(UniversityRoomFundDbContext context)
+    private readonly UniversityRoomFundDbContext _context;
+    private readonly ILogger<Room> _logger;
+    public RoomService(UniversityRoomFundDbContext context, ILogger<Room> logger)
     {
         _context = context;
+        _logger = logger;
     }
     public async Task<Response<List<Room>>> Add(AddRoomDTO addRoomDTO)
     {
@@ -25,6 +27,7 @@ public class RoomService : IRoomService
         {
             response.Success = false;
             response.ErrorMessage = "This room number is already taken";
+            _logger.LogError($"Error adding new room Id: {room.Id} Number: {room.Number} already");
         }
         else
         {
@@ -33,6 +36,8 @@ public class RoomService : IRoomService
             rooms.Add(newRoom);
 
             await _context.SaveChangesAsync();
+
+            _logger.LogInformation($"Added new room Id: {newRoom.Id} Number: {newRoom.Number}");
 
             response.Data = rooms;
         }
@@ -48,6 +53,7 @@ public class RoomService : IRoomService
         {
             response.Success = false;
             response.ErrorMessage = "This room doesn't exist";
+            _logger.LogError($"Error updating room Id: {room.Id} Number: {room.Number} not found");
         }
         else
         {
@@ -56,6 +62,8 @@ public class RoomService : IRoomService
 
             _context.Rooms.Update(newRoom);
             await _context.SaveChangesAsync();
+
+            _logger.LogInformation($"Updated new room Id: {newRoom.Id} Number: {newRoom.Number}");
 
             response.Data = newRoom;
         }
@@ -72,11 +80,14 @@ public class RoomService : IRoomService
         {
             response.Success = false;
             response.ErrorMessage = "This room doesn't exist";
+            _logger.LogError($"Error deleting room Id: {room.Id} Number: {room.Number} not found");
         }
         else
         {
             _context.Rooms.Remove(room);
             await _context.SaveChangesAsync();
+
+            _logger.LogInformation($"Deleted room Id: {room.Id} Number: {room.Number}");
 
             response.Data = location.Rooms.ToList();
         }
