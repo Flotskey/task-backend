@@ -16,6 +16,13 @@ namespace Web.Controllers
             _roomService = roomService;
         }
 
+        [HttpGet("get/{locationId}")]
+        public async Task<IActionResult> Get(int locationId)
+        {
+            var response = await _roomService.Get(locationId);
+            return Ok(response);
+        }
+
         [HttpPost("add")]
         public async Task<IActionResult> Add(AddRoomDTO addRoomDTO)
         {

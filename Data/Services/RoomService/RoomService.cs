@@ -16,6 +16,14 @@ public class RoomService : IRoomService
         _context = context;
         _logger = logger;
     }
+
+    public async Task<Response<List<Room>>> Get(int locationId)
+    {
+        var response = new Response<List<Room>>();
+        var rooms = await _context.Rooms.Where(r => r.LocationId == locationId).ToListAsync();
+        response.Data = rooms;
+        return response;
+    }
     public async Task<Response<List<Room>>> Add(AddRoomDTO addRoomDTO)
     {
         var response = new Response<List<Room>>();

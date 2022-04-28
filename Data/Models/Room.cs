@@ -12,7 +12,7 @@ public class Room
     public double Length { get; set; }
     public RoomPurpose Purpose { get; set; } = RoomPurpose.Study;
     public RoomType Type { get; set; } = RoomType.Basic;
-    public double Area { get; set; }
+    public double Area { get; }
     public int LocationId { get; set; }
     [JsonIgnore]
     public Location? Location { get; set; }

@@ -4,6 +4,7 @@ using ASPNETCoreApp;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFCoreConsoleApp.Migrations
 {
     [DbContext(typeof(UniversityRoomFundDbContext))]
-    partial class UniversityRoomFundDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220426185951_AddRoomHeight")]
+    partial class AddRoomHeight
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -221,6 +223,9 @@ namespace EFCoreConsoleApp.Migrations
                     b.Property<int?>("DepartmentId")
                         .HasColumnType("int");
 
+                    b.Property<double>("Height")
+                        .HasColumnType("float");
+
                     b.Property<double>("Length")
                         .HasColumnType("float");
 
@@ -235,6 +240,11 @@ namespace EFCoreConsoleApp.Migrations
 
                     b.Property<int>("Type")
                         .HasColumnType("int");
+
+                    b.Property<double>("Volume")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("float")
+                        .HasComputedColumnSql("[Width]*[Length]*[Height]", true);
 
                     b.Property<double>("Width")
                         .HasColumnType("float");
@@ -253,575 +263,699 @@ namespace EFCoreConsoleApp.Migrations
                             Id = 1,
                             Area = 0.0,
                             DepartmentId = 1,
-                            Length = 6.0,
+                            Height = 3.5,
+                            Length = 16.0,
                             LocationId = 11,
-                            Number = 1,
+                            Number = 7,
                             Purpose = 0,
-                            Type = 0,
-                            Width = 9.0
+                            Type = 1,
+                            Volume = 0.0,
+                            Width = 11.0
                         },
                         new
                         {
                             Id = 2,
                             Area = 0.0,
                             DepartmentId = 1,
-                            Length = 12.0,
+                            Height = 3.5,
+                            Length = 19.0,
                             LocationId = 11,
-                            Number = 22,
+                            Number = 4,
                             Purpose = 1,
                             Type = 0,
-                            Width = 6.0
+                            Volume = 0.0,
+                            Width = 11.0
                         },
                         new
                         {
                             Id = 3,
                             Area = 0.0,
                             DepartmentId = 1,
-                            Length = 10.0,
+                            Height = 3.5,
+                            Length = 13.0,
                             LocationId = 11,
-                            Number = 23,
-                            Purpose = 0,
+                            Number = 1,
+                            Purpose = 1,
                             Type = 1,
-                            Width = 11.0
+                            Volume = 0.0,
+                            Width = 8.0
                         },
                         new
                         {
                             Id = 4,
                             Area = 0.0,
                             DepartmentId = 1,
-                            Length = 11.0,
+                            Height = 3.5,
+                            Length = 19.0,
                             LocationId = 11,
-                            Number = 31,
+                            Number = 30,
                             Purpose = 1,
-                            Type = 0,
-                            Width = 7.0
+                            Type = 1,
+                            Volume = 0.0,
+                            Width = 13.0
                         },
                         new
                         {
                             Id = 5,
                             Area = 0.0,
                             DepartmentId = 1,
-                            Length = 9.0,
+                            Height = 3.5,
+                            Length = 18.0,
                             LocationId = 11,
-                            Number = 11,
+                            Number = 14,
                             Purpose = 0,
-                            Type = 0,
-                            Width = 7.0
+                            Type = 1,
+                            Volume = 0.0,
+                            Width = 9.0
                         },
                         new
                         {
                             Id = 6,
                             Area = 0.0,
                             DepartmentId = 1,
-                            Length = 17.0,
+                            Height = 3.5,
+                            Length = 20.0,
                             LocationId = 11,
-                            Number = 21,
+                            Number = 2,
                             Purpose = 1,
-                            Type = 1,
-                            Width = 16.0
+                            Type = 0,
+                            Volume = 0.0,
+                            Width = 10.0
                         },
                         new
                         {
                             Id = 7,
                             Area = 0.0,
                             DepartmentId = 1,
-                            Length = 17.0,
+                            Height = 3.5,
+                            Length = 7.0,
                             LocationId = 11,
-                            Number = 25,
-                            Purpose = 1,
-                            Type = 1,
-                            Width = 15.0
+                            Number = 6,
+                            Purpose = 0,
+                            Type = 0,
+                            Volume = 0.0,
+                            Width = 7.0
                         },
                         new
                         {
                             Id = 8,
                             Area = 0.0,
                             DepartmentId = 1,
-                            Length = 8.0,
+                            Height = 3.5,
+                            Length = 18.0,
                             LocationId = 11,
-                            Number = 14,
+                            Number = 27,
                             Purpose = 0,
                             Type = 0,
-                            Width = 12.0
+                            Volume = 0.0,
+                            Width = 9.0
                         },
                         new
                         {
                             Id = 9,
                             Area = 0.0,
                             DepartmentId = 1,
-                            Length = 8.0,
+                            Height = 3.5,
+                            Length = 10.0,
                             LocationId = 11,
-                            Number = 8,
-                            Purpose = 1,
+                            Number = 17,
+                            Purpose = 0,
                             Type = 0,
-                            Width = 16.0
+                            Volume = 0.0,
+                            Width = 12.0
                         },
                         new
                         {
                             Id = 10,
                             Area = 0.0,
                             DepartmentId = 1,
-                            Length = 10.0,
-                            LocationId = 11,
-                            Number = 7,
-                            Purpose = 1,
-                            Type = 1,
-                            Width = 15.0
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Area = 0.0,
-                            DepartmentId = 1,
-                            Length = 8.0,
+                            Height = 3.5,
+                            Length = 11.0,
                             LocationId = 11,
                             Number = 20,
                             Purpose = 0,
                             Type = 0,
-                            Width = 16.0
+                            Volume = 0.0,
+                            Width = 14.0
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Area = 0.0,
+                            DepartmentId = 1,
+                            Height = 3.5,
+                            Length = 15.0,
+                            LocationId = 11,
+                            Number = 13,
+                            Purpose = 0,
+                            Type = 1,
+                            Volume = 0.0,
+                            Width = 12.0
                         },
                         new
                         {
                             Id = 14,
                             Area = 0.0,
                             DepartmentId = 1,
-                            Length = 17.0,
+                            Height = 3.5,
+                            Length = 14.0,
                             LocationId = 11,
                             Number = 18,
-                            Purpose = 0,
+                            Purpose = 1,
                             Type = 0,
+                            Volume = 0.0,
+                            Width = 12.0
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Area = 0.0,
+                            DepartmentId = 1,
+                            Height = 3.5,
+                            Length = 12.0,
+                            LocationId = 11,
+                            Number = 31,
+                            Purpose = 1,
+                            Type = 0,
+                            Volume = 0.0,
                             Width = 13.0
                         },
                         new
                         {
-                            Id = 15,
+                            Id = 17,
                             Area = 0.0,
                             DepartmentId = 1,
-                            Length = 19.0,
+                            Height = 3.5,
+                            Length = 17.0,
                             LocationId = 11,
                             Number = 28,
-                            Purpose = 1,
-                            Type = 1,
-                            Width = 8.0
-                        },
-                        new
-                        {
-                            Id = 18,
-                            Area = 0.0,
-                            DepartmentId = 1,
-                            Length = 18.0,
-                            LocationId = 11,
-                            Number = 17,
-                            Purpose = 1,
+                            Purpose = 0,
                             Type = 0,
-                            Width = 8.0
-                        },
-                        new
-                        {
-                            Id = 19,
-                            Area = 0.0,
-                            DepartmentId = 1,
-                            Length = 11.0,
-                            LocationId = 11,
-                            Number = 30,
-                            Purpose = 1,
-                            Type = 0,
-                            Width = 11.0
+                            Volume = 0.0,
+                            Width = 13.0
                         },
                         new
                         {
                             Id = 20,
                             Area = 0.0,
                             DepartmentId = 1,
-                            Length = 9.0,
+                            Height = 3.5,
+                            Length = 16.0,
                             LocationId = 11,
-                            Number = 12,
+                            Number = 21,
                             Purpose = 0,
                             Type = 0,
+                            Volume = 0.0,
+                            Width = 14.0
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Area = 0.0,
+                            DepartmentId = 1,
+                            Height = 3.5,
+                            Length = 16.0,
+                            LocationId = 11,
+                            Number = 11,
+                            Purpose = 1,
+                            Type = 0,
+                            Volume = 0.0,
                             Width = 8.0
                         },
                         new
                         {
-                            Id = 24,
+                            Id = 22,
                             Area = 0.0,
                             DepartmentId = 1,
+                            Height = 3.5,
+                            Length = 13.0,
+                            LocationId = 11,
+                            Number = 8,
+                            Purpose = 0,
+                            Type = 1,
+                            Volume = 0.0,
+                            Width = 13.0
+                        },
+                        new
+                        {
+                            Id = 25,
+                            Area = 0.0,
+                            DepartmentId = 1,
+                            Height = 3.5,
                             Length = 7.0,
                             LocationId = 11,
-                            Number = 26,
+                            Number = 29,
                             Purpose = 1,
                             Type = 0,
-                            Width = 13.0
+                            Volume = 0.0,
+                            Width = 7.0
                         },
                         new
                         {
                             Id = 26,
                             Area = 0.0,
                             DepartmentId = 1,
-                            Length = 15.0,
-                            LocationId = 11,
-                            Number = 5,
-                            Purpose = 0,
-                            Type = 1,
-                            Width = 13.0
-                        },
-                        new
-                        {
-                            Id = 28,
-                            Area = 0.0,
-                            DepartmentId = 1,
-                            Length = 13.0,
+                            Height = 3.5,
+                            Length = 12.0,
                             LocationId = 11,
                             Number = 19,
                             Purpose = 1,
                             Type = 0,
-                            Width = 8.0
+                            Volume = 0.0,
+                            Width = 6.0
                         },
                         new
                         {
-                            Id = 29,
+                            Id = 27,
                             Area = 0.0,
                             DepartmentId = 1,
-                            Length = 11.0,
+                            Height = 3.5,
+                            Length = 14.0,
                             LocationId = 11,
-                            Number = 4,
+                            Number = 9,
+                            Purpose = 0,
+                            Type = 0,
+                            Volume = 0.0,
+                            Width = 10.0
+                        },
+                        new
+                        {
+                            Id = 30,
+                            Area = 0.0,
+                            DepartmentId = 1,
+                            Height = 3.5,
+                            Length = 9.0,
+                            LocationId = 11,
+                            Number = 15,
                             Purpose = 1,
                             Type = 1,
-                            Width = 12.0
+                            Volume = 0.0,
+                            Width = 6.0
+                        },
+                        new
+                        {
+                            Id = 31,
+                            Area = 0.0,
+                            DepartmentId = 1,
+                            Height = 3.5,
+                            Length = 12.0,
+                            LocationId = 11,
+                            Number = 26,
+                            Purpose = 1,
+                            Type = 1,
+                            Volume = 0.0,
+                            Width = 6.0
                         },
                         new
                         {
                             Id = 32,
                             Area = 0.0,
                             DepartmentId = 1,
-                            Length = 9.0,
+                            Height = 3.5,
+                            Length = 6.0,
                             LocationId = 11,
-                            Number = 15,
-                            Purpose = 0,
+                            Number = 10,
+                            Purpose = 1,
                             Type = 0,
-                            Width = 11.0
+                            Volume = 0.0,
+                            Width = 14.0
                         },
                         new
                         {
                             Id = 33,
                             Area = 0.0,
                             DepartmentId = 2,
+                            Height = 3.0,
                             Length = 20.0,
                             LocationId = 22,
-                            Number = 34,
-                            Purpose = 1,
-                            Type = 1,
-                            Width = 15.0
+                            Number = 54,
+                            Purpose = 0,
+                            Type = 0,
+                            Volume = 0.0,
+                            Width = 12.0
                         },
                         new
                         {
                             Id = 34,
                             Area = 0.0,
                             DepartmentId = 2,
-                            Length = 7.0,
+                            Height = 3.0,
+                            Length = 8.0,
                             LocationId = 22,
-                            Number = 49,
-                            Purpose = 1,
+                            Number = 37,
+                            Purpose = 0,
                             Type = 0,
-                            Width = 6.0
+                            Volume = 0.0,
+                            Width = 8.0
                         },
                         new
                         {
                             Id = 35,
                             Area = 0.0,
                             DepartmentId = 2,
-                            Length = 18.0,
+                            Height = 3.0,
+                            Length = 9.0,
                             LocationId = 22,
-                            Number = 35,
-                            Purpose = 0,
-                            Type = 1,
-                            Width = 12.0
+                            Number = 50,
+                            Purpose = 1,
+                            Type = 0,
+                            Volume = 0.0,
+                            Width = 8.0
                         },
                         new
                         {
                             Id = 36,
                             Area = 0.0,
                             DepartmentId = 2,
-                            Length = 17.0,
+                            Height = 3.0,
+                            Length = 10.0,
                             LocationId = 22,
-                            Number = 41,
-                            Purpose = 0,
-                            Type = 1,
-                            Width = 9.0
-                        },
-                        new
-                        {
-                            Id = 37,
-                            Area = 0.0,
-                            DepartmentId = 2,
-                            Length = 13.0,
-                            LocationId = 22,
-                            Number = 53,
+                            Number = 48,
                             Purpose = 1,
-                            Type = 0,
-                            Width = 6.0
-                        },
-                        new
-                        {
-                            Id = 38,
-                            Area = 0.0,
-                            DepartmentId = 2,
-                            Length = 8.0,
-                            LocationId = 22,
-                            Number = 57,
-                            Purpose = 0,
-                            Type = 0,
-                            Width = 15.0
+                            Type = 1,
+                            Volume = 0.0,
+                            Width = 8.0
                         },
                         new
                         {
                             Id = 39,
                             Area = 0.0,
                             DepartmentId = 2,
-                            Length = 11.0,
+                            Height = 3.0,
+                            Length = 19.0,
                             LocationId = 22,
-                            Number = 55,
+                            Number = 56,
                             Purpose = 1,
                             Type = 1,
-                            Width = 16.0
+                            Volume = 0.0,
+                            Width = 14.0
                         },
                         new
                         {
                             Id = 41,
                             Area = 0.0,
                             DepartmentId = 2,
-                            Length = 10.0,
+                            Height = 3.0,
+                            Length = 17.0,
                             LocationId = 22,
-                            Number = 42,
+                            Number = 62,
                             Purpose = 1,
-                            Type = 0,
-                            Width = 7.0
-                        },
-                        new
-                        {
-                            Id = 42,
-                            Area = 0.0,
-                            DepartmentId = 2,
-                            Length = 10.0,
-                            LocationId = 22,
-                            Number = 54,
-                            Purpose = 1,
-                            Type = 0,
-                            Width = 14.0
+                            Type = 1,
+                            Volume = 0.0,
+                            Width = 8.0
                         },
                         new
                         {
                             Id = 43,
                             Area = 0.0,
                             DepartmentId = 2,
-                            Length = 6.0,
+                            Height = 3.0,
+                            Length = 12.0,
                             LocationId = 22,
-                            Number = 61,
+                            Number = 34,
+                            Purpose = 1,
+                            Type = 0,
+                            Volume = 0.0,
+                            Width = 6.0
+                        },
+                        new
+                        {
+                            Id = 44,
+                            Area = 0.0,
+                            DepartmentId = 2,
+                            Height = 3.0,
+                            Length = 18.0,
+                            LocationId = 22,
+                            Number = 53,
+                            Purpose = 0,
+                            Type = 0,
+                            Volume = 0.0,
+                            Width = 14.0
+                        },
+                        new
+                        {
+                            Id = 45,
+                            Area = 0.0,
+                            DepartmentId = 2,
+                            Height = 3.0,
+                            Length = 17.0,
+                            LocationId = 22,
+                            Number = 44,
+                            Purpose = 1,
+                            Type = 1,
+                            Volume = 0.0,
+                            Width = 13.0
+                        },
+                        new
+                        {
+                            Id = 46,
+                            Area = 0.0,
+                            DepartmentId = 2,
+                            Height = 3.0,
+                            Length = 15.0,
+                            LocationId = 22,
+                            Number = 63,
+                            Purpose = 1,
+                            Type = 1,
+                            Volume = 0.0,
+                            Width = 15.0
+                        },
+                        new
+                        {
+                            Id = 48,
+                            Area = 0.0,
+                            DepartmentId = 2,
+                            Height = 3.0,
+                            Length = 10.0,
+                            LocationId = 22,
+                            Number = 42,
                             Purpose = 0,
                             Type = 1,
+                            Volume = 0.0,
                             Width = 7.0
+                        },
+                        new
+                        {
+                            Id = 49,
+                            Area = 0.0,
+                            DepartmentId = 2,
+                            Height = 3.0,
+                            Length = 19.0,
+                            LocationId = 22,
+                            Number = 64,
+                            Purpose = 0,
+                            Type = 0,
+                            Volume = 0.0,
+                            Width = 12.0
                         },
                         new
                         {
                             Id = 50,
                             Area = 0.0,
                             DepartmentId = 2,
-                            Length = 14.0,
+                            Height = 3.0,
+                            Length = 12.0,
                             LocationId = 22,
-                            Number = 47,
-                            Purpose = 1,
-                            Type = 1,
-                            Width = 16.0
+                            Number = 35,
+                            Purpose = 0,
+                            Type = 0,
+                            Volume = 0.0,
+                            Width = 15.0
                         },
                         new
                         {
                             Id = 52,
                             Area = 0.0,
                             DepartmentId = 2,
-                            Length = 15.0,
+                            Height = 3.0,
+                            Length = 11.0,
                             LocationId = 22,
-                            Number = 56,
+                            Number = 40,
                             Purpose = 0,
                             Type = 0,
-                            Width = 12.0
+                            Volume = 0.0,
+                            Width = 16.0
                         },
                         new
                         {
                             Id = 53,
                             Area = 0.0,
                             DepartmentId = 2,
-                            Length = 6.0,
+                            Height = 3.0,
+                            Length = 11.0,
                             LocationId = 22,
-                            Number = 63,
-                            Purpose = 1,
-                            Type = 1,
-                            Width = 13.0
+                            Number = 52,
+                            Purpose = 0,
+                            Type = 0,
+                            Volume = 0.0,
+                            Width = 10.0
                         },
                         new
                         {
                             Id = 54,
                             Area = 0.0,
                             DepartmentId = 2,
-                            Length = 8.0,
+                            Height = 3.0,
+                            Length = 19.0,
                             LocationId = 22,
-                            Number = 48,
+                            Number = 33,
                             Purpose = 0,
                             Type = 1,
-                            Width = 11.0
+                            Volume = 0.0,
+                            Width = 15.0
                         },
                         new
                         {
                             Id = 55,
                             Area = 0.0,
                             DepartmentId = 2,
+                            Height = 3.0,
                             Length = 15.0,
                             LocationId = 22,
-                            Number = 36,
-                            Purpose = 1,
-                            Type = 0,
-                            Width = 14.0
-                        },
-                        new
-                        {
-                            Id = 56,
-                            Area = 0.0,
-                            DepartmentId = 2,
-                            Length = 6.0,
-                            LocationId = 22,
-                            Number = 64,
+                            Number = 58,
                             Purpose = 0,
-                            Type = 0,
-                            Width = 9.0
+                            Type = 1,
+                            Volume = 0.0,
+                            Width = 13.0
                         },
                         new
                         {
                             Id = 59,
                             Area = 0.0,
                             DepartmentId = 2,
-                            Length = 15.0,
-                            LocationId = 22,
-                            Number = 52,
-                            Purpose = 0,
-                            Type = 1,
-                            Width = 12.0
-                        },
-                        new
-                        {
-                            Id = 61,
-                            Area = 0.0,
-                            DepartmentId = 2,
+                            Height = 3.0,
                             Length = 18.0,
                             LocationId = 22,
-                            Number = 62,
-                            Purpose = 0,
-                            Type = 0,
-                            Width = 8.0
-                        },
-                        new
-                        {
-                            Id = 63,
-                            Area = 0.0,
-                            DepartmentId = 2,
-                            Length = 17.0,
-                            LocationId = 22,
-                            Number = 44,
+                            Number = 51,
                             Purpose = 1,
                             Type = 1,
-                            Width = 7.0
+                            Volume = 0.0,
+                            Width = 11.0
                         },
                         new
                         {
-                            Id = 65,
+                            Id = 64,
                             Area = 0.0,
                             DepartmentId = 2,
-                            Length = 11.0,
+                            Height = 3.0,
+                            Length = 17.0,
                             LocationId = 22,
-                            Number = 37,
+                            Number = 39,
                             Purpose = 0,
-                            Type = 1,
-                            Width = 6.0
+                            Type = 0,
+                            Volume = 0.0,
+                            Width = 9.0
                         },
                         new
                         {
                             Id = 66,
                             Area = 0.0,
                             DepartmentId = 3,
-                            Length = 13.0,
+                            Height = 3.0,
+                            Length = 16.0,
                             LocationId = 33,
-                            Number = 123,
+                            Number = 71,
                             Purpose = 0,
-                            Type = 1,
-                            Width = 16.0
+                            Type = 0,
+                            Volume = 0.0,
+                            Width = 13.0
                         },
                         new
                         {
                             Id = 67,
                             Area = 0.0,
                             DepartmentId = 3,
-                            Length = 12.0,
+                            Height = 3.0,
+                            Length = 7.0,
                             LocationId = 33,
-                            Number = 129,
-                            Purpose = 0,
-                            Type = 0,
-                            Width = 14.0
+                            Number = 117,
+                            Purpose = 1,
+                            Type = 1,
+                            Volume = 0.0,
+                            Width = 16.0
                         },
                         new
                         {
                             Id = 68,
                             Area = 0.0,
                             DepartmentId = 3,
-                            Length = 12.0,
+                            Height = 3.0,
+                            Length = 9.0,
                             LocationId = 33,
-                            Number = 114,
-                            Purpose = 1,
-                            Type = 0,
-                            Width = 16.0
+                            Number = 124,
+                            Purpose = 0,
+                            Type = 1,
+                            Volume = 0.0,
+                            Width = 12.0
                         },
                         new
                         {
                             Id = 69,
                             Area = 0.0,
                             DepartmentId = 3,
-                            Length = 6.0,
+                            Height = 3.0,
+                            Length = 16.0,
                             LocationId = 33,
-                            Number = 97,
+                            Number = 122,
                             Purpose = 0,
                             Type = 1,
-                            Width = 15.0
+                            Volume = 0.0,
+                            Width = 12.0
                         },
                         new
                         {
                             Id = 70,
                             Area = 0.0,
                             DepartmentId = 3,
-                            Length = 11.0,
+                            Height = 3.0,
+                            Length = 14.0,
                             LocationId = 33,
-                            Number = 81,
+                            Number = 110,
                             Purpose = 1,
-                            Type = 1,
-                            Width = 16.0
+                            Type = 0,
+                            Volume = 0.0,
+                            Width = 12.0
                         },
                         new
                         {
                             Id = 71,
                             Area = 0.0,
                             DepartmentId = 3,
-                            Length = 17.0,
+                            Height = 3.0,
+                            Length = 9.0,
                             LocationId = 33,
-                            Number = 78,
-                            Purpose = 1,
+                            Number = 85,
+                            Purpose = 0,
                             Type = 0,
+                            Volume = 0.0,
                             Width = 14.0
+                        },
+                        new
+                        {
+                            Id = 72,
+                            Area = 0.0,
+                            DepartmentId = 3,
+                            Height = 3.0,
+                            Length = 10.0,
+                            LocationId = 33,
+                            Number = 68,
+                            Purpose = 0,
+                            Type = 0,
+                            Volume = 0.0,
+                            Width = 9.0
                         },
                         new
                         {
                             Id = 73,
                             Area = 0.0,
                             DepartmentId = 3,
-                            Length = 18.0,
+                            Height = 3.0,
+                            Length = 13.0,
                             LocationId = 33,
-                            Number = 101,
+                            Number = 106,
                             Purpose = 1,
                             Type = 1,
+                            Volume = 0.0,
                             Width = 6.0
                         },
                         new
@@ -829,155 +963,167 @@ namespace EFCoreConsoleApp.Migrations
                             Id = 74,
                             Area = 0.0,
                             DepartmentId = 3,
-                            Length = 6.0,
+                            Height = 3.0,
+                            Length = 14.0,
                             LocationId = 33,
-                            Number = 109,
-                            Purpose = 1,
-                            Type = 0,
-                            Width = 10.0
-                        },
-                        new
-                        {
-                            Id = 75,
-                            Area = 0.0,
-                            DepartmentId = 3,
-                            Length = 6.0,
-                            LocationId = 33,
-                            Number = 91,
+                            Number = 112,
                             Purpose = 1,
                             Type = 1,
-                            Width = 15.0
+                            Volume = 0.0,
+                            Width = 9.0
                         },
                         new
                         {
                             Id = 76,
                             Area = 0.0,
                             DepartmentId = 3,
+                            Height = 3.0,
                             Length = 18.0,
                             LocationId = 33,
-                            Number = 99,
-                            Purpose = 0,
+                            Number = 96,
+                            Purpose = 1,
                             Type = 1,
-                            Width = 13.0
-                        },
-                        new
-                        {
-                            Id = 77,
-                            Area = 0.0,
-                            DepartmentId = 3,
-                            Length = 14.0,
-                            LocationId = 33,
-                            Number = 125,
-                            Purpose = 0,
-                            Type = 1,
-                            Width = 15.0
+                            Volume = 0.0,
+                            Width = 14.0
                         },
                         new
                         {
                             Id = 78,
                             Area = 0.0,
                             DepartmentId = 3,
-                            Length = 8.0,
+                            Height = 3.0,
+                            Length = 19.0,
                             LocationId = 33,
-                            Number = 79,
-                            Purpose = 0,
-                            Type = 0,
-                            Width = 14.0
+                            Number = 119,
+                            Purpose = 1,
+                            Type = 1,
+                            Volume = 0.0,
+                            Width = 11.0
                         },
                         new
                         {
                             Id = 79,
                             Area = 0.0,
                             DepartmentId = 3,
-                            Length = 16.0,
+                            Height = 3.0,
+                            Length = 9.0,
                             LocationId = 33,
-                            Number = 80,
-                            Purpose = 1,
-                            Type = 1,
-                            Width = 10.0
+                            Number = 83,
+                            Purpose = 0,
+                            Type = 0,
+                            Volume = 0.0,
+                            Width = 7.0
                         },
                         new
                         {
                             Id = 80,
                             Area = 0.0,
                             DepartmentId = 3,
-                            Length = 17.0,
+                            Height = 3.0,
+                            Length = 8.0,
                             LocationId = 33,
-                            Number = 113,
-                            Purpose = 1,
+                            Number = 70,
+                            Purpose = 0,
+                            Type = 0,
+                            Volume = 0.0,
+                            Width = 11.0
+                        },
+                        new
+                        {
+                            Id = 81,
+                            Area = 0.0,
+                            DepartmentId = 3,
+                            Height = 3.0,
+                            Length = 14.0,
+                            LocationId = 33,
+                            Number = 102,
+                            Purpose = 0,
                             Type = 1,
-                            Width = 12.0
+                            Volume = 0.0,
+                            Width = 14.0
+                        },
+                        new
+                        {
+                            Id = 82,
+                            Area = 0.0,
+                            DepartmentId = 3,
+                            Height = 3.0,
+                            Length = 6.0,
+                            LocationId = 33,
+                            Number = 89,
+                            Purpose = 1,
+                            Type = 0,
+                            Volume = 0.0,
+                            Width = 8.0
                         },
                         new
                         {
                             Id = 83,
                             Area = 0.0,
                             DepartmentId = 3,
+                            Height = 3.0,
+                            Length = 10.0,
+                            LocationId = 33,
+                            Number = 107,
+                            Purpose = 1,
+                            Type = 1,
+                            Volume = 0.0,
+                            Width = 14.0
+                        },
+                        new
+                        {
+                            Id = 87,
+                            Area = 0.0,
+                            DepartmentId = 3,
+                            Height = 3.0,
                             Length = 6.0,
                             LocationId = 33,
-                            Number = 110,
-                            Purpose = 1,
-                            Type = 0,
-                            Width = 11.0
+                            Number = 120,
+                            Purpose = 0,
+                            Type = 1,
+                            Volume = 0.0,
+                            Width = 13.0
                         },
                         new
                         {
-                            Id = 85,
+                            Id = 88,
                             Area = 0.0,
                             DepartmentId = 3,
-                            Length = 20.0,
+                            Height = 3.0,
+                            Length = 12.0,
                             LocationId = 33,
-                            Number = 71,
-                            Purpose = 1,
+                            Number = 121,
+                            Purpose = 0,
                             Type = 0,
-                            Width = 11.0
-                        },
-                        new
-                        {
-                            Id = 86,
-                            Area = 0.0,
-                            DepartmentId = 3,
-                            Length = 16.0,
-                            LocationId = 33,
-                            Number = 116,
-                            Purpose = 1,
-                            Type = 0,
-                            Width = 8.0
+                            Volume = 0.0,
+                            Width = 16.0
                         },
                         new
                         {
                             Id = 89,
                             Area = 0.0,
                             DepartmentId = 3,
-                            Length = 15.0,
-                            LocationId = 33,
-                            Number = 75,
-                            Purpose = 0,
-                            Type = 0,
-                            Width = 9.0
-                        },
-                        new
-                        {
-                            Id = 90,
-                            Area = 0.0,
-                            DepartmentId = 3,
-                            Length = 19.0,
+                            Height = 3.0,
+                            Length = 16.0,
                             LocationId = 33,
                             Number = 77,
-                            Purpose = 0,
-                            Type = 0,
-                            Width = 14.0
+                            Purpose = 1,
+                            Type = 1,
+                            Volume = 0.0,
+                            Width = 15.0
                         },
                         new
                         {
                             Id = 91,
                             Area = 0.0,
                             DepartmentId = 3,
-                            Length = 13.0,
+                            Height = 3.0,
+                            Length = 9.0,
                             LocationId = 33,
-                            Number = 70,
-                            Purpose = 0,
+                            Number = 79,
+                            Purpose = 1,
                             Type = 1,
+                            Volume = 0.0,
                             Width = 16.0
                         },
                         new
@@ -985,227 +1131,265 @@ namespace EFCoreConsoleApp.Migrations
                             Id = 92,
                             Area = 0.0,
                             DepartmentId = 3,
-                            Length = 7.0,
+                            Height = 3.0,
+                            Length = 8.0,
                             LocationId = 33,
-                            Number = 84,
-                            Purpose = 1,
+                            Number = 72,
+                            Purpose = 0,
                             Type = 1,
-                            Width = 9.0
+                            Volume = 0.0,
+                            Width = 7.0
                         },
                         new
                         {
                             Id = 93,
                             Area = 0.0,
                             DepartmentId = 3,
-                            Length = 20.0,
+                            Height = 3.0,
+                            Length = 14.0,
                             LocationId = 33,
-                            Number = 76,
-                            Purpose = 1,
-                            Type = 1,
-                            Width = 11.0
+                            Number = 105,
+                            Purpose = 0,
+                            Type = 0,
+                            Volume = 0.0,
+                            Width = 12.0
+                        },
+                        new
+                        {
+                            Id = 94,
+                            Area = 0.0,
+                            DepartmentId = 3,
+                            Height = 3.0,
+                            Length = 15.0,
+                            LocationId = 33,
+                            Number = 100,
+                            Purpose = 0,
+                            Type = 0,
+                            Volume = 0.0,
+                            Width = 10.0
                         },
                         new
                         {
                             Id = 95,
                             Area = 0.0,
                             DepartmentId = 3,
+                            Height = 3.0,
                             Length = 20.0,
                             LocationId = 33,
-                            Number = 103,
+                            Number = 113,
+                            Purpose = 0,
+                            Type = 0,
+                            Volume = 0.0,
+                            Width = 6.0
+                        },
+                        new
+                        {
+                            Id = 96,
+                            Area = 0.0,
+                            DepartmentId = 3,
+                            Height = 3.0,
+                            Length = 8.0,
+                            LocationId = 33,
+                            Number = 93,
+                            Purpose = 0,
+                            Type = 0,
+                            Volume = 0.0,
+                            Width = 11.0
+                        },
+                        new
+                        {
+                            Id = 97,
+                            Area = 0.0,
+                            DepartmentId = 3,
+                            Height = 3.0,
+                            Length = 16.0,
+                            LocationId = 33,
+                            Number = 129,
                             Purpose = 1,
-                            Type = 1,
-                            Width = 16.0
+                            Type = 0,
+                            Volume = 0.0,
+                            Width = 8.0
                         },
                         new
                         {
                             Id = 99,
                             Area = 0.0,
                             DepartmentId = 3,
-                            Length = 7.0,
+                            Height = 3.0,
+                            Length = 11.0,
                             LocationId = 33,
-                            Number = 120,
+                            Number = 109,
                             Purpose = 1,
-                            Type = 1,
-                            Width = 13.0
-                        },
-                        new
-                        {
-                            Id = 101,
-                            Area = 0.0,
-                            DepartmentId = 3,
-                            Length = 8.0,
-                            LocationId = 33,
-                            Number = 82,
-                            Purpose = 0,
-                            Type = 1,
-                            Width = 12.0
-                        },
-                        new
-                        {
-                            Id = 102,
-                            Area = 0.0,
-                            DepartmentId = 3,
-                            Length = 10.0,
-                            LocationId = 33,
-                            Number = 117,
-                            Purpose = 0,
                             Type = 0,
-                            Width = 14.0
+                            Volume = 0.0,
+                            Width = 7.0
                         },
                         new
                         {
-                            Id = 103,
+                            Id = 104,
                             Area = 0.0,
                             DepartmentId = 3,
-                            Length = 20.0,
-                            LocationId = 33,
-                            Number = 89,
-                            Purpose = 0,
-                            Type = 1,
-                            Width = 12.0
-                        },
-                        new
-                        {
-                            Id = 105,
-                            Area = 0.0,
-                            DepartmentId = 3,
-                            Length = 14.0,
-                            LocationId = 33,
-                            Number = 106,
-                            Purpose = 1,
-                            Type = 1,
-                            Width = 8.0
-                        },
-                        new
-                        {
-                            Id = 110,
-                            Area = 0.0,
-                            DepartmentId = 3,
+                            Height = 3.0,
                             Length = 16.0,
                             LocationId = 33,
-                            Number = 85,
-                            Purpose = 1,
+                            Number = 88,
+                            Purpose = 0,
+                            Type = 0,
+                            Volume = 0.0,
+                            Width = 12.0
+                        },
+                        new
+                        {
+                            Id = 106,
+                            Area = 0.0,
+                            DepartmentId = 3,
+                            Height = 3.0,
+                            Length = 6.0,
+                            LocationId = 33,
+                            Number = 115,
+                            Purpose = 0,
+                            Type = 0,
+                            Volume = 0.0,
+                            Width = 11.0
+                        },
+                        new
+                        {
+                            Id = 108,
+                            Area = 0.0,
+                            DepartmentId = 3,
+                            Height = 3.0,
+                            Length = 16.0,
+                            LocationId = 33,
+                            Number = 81,
+                            Purpose = 0,
+                            Type = 0,
+                            Volume = 0.0,
+                            Width = 11.0
+                        },
+                        new
+                        {
+                            Id = 111,
+                            Area = 0.0,
+                            DepartmentId = 3,
+                            Height = 3.0,
+                            Length = 8.0,
+                            LocationId = 33,
+                            Number = 66,
+                            Purpose = 0,
                             Type = 1,
+                            Volume = 0.0,
                             Width = 9.0
                         },
                         new
                         {
-                            Id = 112,
+                            Id = 113,
                             Area = 0.0,
                             DepartmentId = 3,
-                            Length = 20.0,
+                            Height = 3.0,
+                            Length = 15.0,
                             LocationId = 33,
-                            Number = 88,
+                            Number = 128,
                             Purpose = 0,
                             Type = 1,
-                            Width = 13.0
+                            Volume = 0.0,
+                            Width = 15.0
                         },
                         new
                         {
                             Id = 115,
                             Area = 0.0,
                             DepartmentId = 3,
-                            Length = 20.0,
+                            Height = 3.0,
+                            Length = 7.0,
                             LocationId = 33,
-                            Number = 130,
+                            Number = 123,
                             Purpose = 1,
                             Type = 1,
-                            Width = 11.0
+                            Volume = 0.0,
+                            Width = 8.0
                         },
                         new
                         {
                             Id = 116,
                             Area = 0.0,
                             DepartmentId = 3,
-                            Length = 11.0,
+                            Height = 3.0,
+                            Length = 9.0,
                             LocationId = 33,
-                            Number = 127,
-                            Purpose = 0,
-                            Type = 1,
-                            Width = 11.0
-                        },
-                        new
-                        {
-                            Id = 117,
-                            Area = 0.0,
-                            DepartmentId = 3,
-                            Length = 12.0,
-                            LocationId = 33,
-                            Number = 118,
+                            Number = 111,
                             Purpose = 0,
                             Type = 0,
-                            Width = 12.0
+                            Volume = 0.0,
+                            Width = 14.0
                         },
                         new
                         {
                             Id = 119,
                             Area = 0.0,
                             DepartmentId = 3,
-                            Length = 16.0,
+                            Height = 3.0,
+                            Length = 11.0,
                             LocationId = 33,
-                            Number = 126,
+                            Number = 87,
                             Purpose = 0,
-                            Type = 0,
-                            Width = 6.0
+                            Type = 1,
+                            Volume = 0.0,
+                            Width = 9.0
+                        },
+                        new
+                        {
+                            Id = 121,
+                            Area = 0.0,
+                            DepartmentId = 3,
+                            Height = 3.0,
+                            Length = 18.0,
+                            LocationId = 33,
+                            Number = 104,
+                            Purpose = 1,
+                            Type = 1,
+                            Volume = 0.0,
+                            Width = 8.0
                         },
                         new
                         {
                             Id = 123,
                             Area = 0.0,
                             DepartmentId = 3,
-                            Length = 14.0,
+                            Height = 3.0,
+                            Length = 18.0,
                             LocationId = 33,
-                            Number = 93,
-                            Purpose = 0,
-                            Type = 1,
-                            Width = 10.0
+                            Number = 125,
+                            Purpose = 1,
+                            Type = 0,
+                            Volume = 0.0,
+                            Width = 13.0
                         },
                         new
                         {
                             Id = 124,
                             Area = 0.0,
                             DepartmentId = 3,
-                            Length = 20.0,
+                            Height = 3.0,
+                            Length = 11.0,
                             LocationId = 33,
-                            Number = 111,
-                            Purpose = 0,
+                            Number = 97,
+                            Purpose = 1,
                             Type = 1,
-                            Width = 9.0
-                        },
-                        new
-                        {
-                            Id = 129,
-                            Area = 0.0,
-                            DepartmentId = 3,
-                            Length = 9.0,
-                            LocationId = 33,
-                            Number = 87,
-                            Purpose = 0,
-                            Type = 0,
-                            Width = 10.0
-                        },
-                        new
-                        {
-                            Id = 130,
-                            Area = 0.0,
-                            DepartmentId = 3,
-                            Length = 14.0,
-                            LocationId = 33,
-                            Number = 98,
-                            Purpose = 0,
-                            Type = 1,
-                            Width = 12.0
+                            Volume = 0.0,
+                            Width = 8.0
                         },
                         new
                         {
                             Id = 132,
                             Area = 0.0,
                             DepartmentId = 4,
-                            Length = 17.0,
+                            Height = 3.0,
+                            Length = 12.0,
                             LocationId = 44,
-                            Number = 161,
+                            Number = 151,
                             Purpose = 0,
                             Type = 1,
+                            Volume = 0.0,
                             Width = 8.0
                         },
                         new
@@ -1213,59 +1397,97 @@ namespace EFCoreConsoleApp.Migrations
                             Id = 133,
                             Area = 0.0,
                             DepartmentId = 4,
-                            Length = 13.0,
+                            Height = 3.0,
+                            Length = 11.0,
                             LocationId = 44,
-                            Number = 158,
-                            Purpose = 1,
-                            Type = 1,
-                            Width = 13.0
+                            Number = 147,
+                            Purpose = 0,
+                            Type = 0,
+                            Volume = 0.0,
+                            Width = 10.0
                         },
                         new
                         {
                             Id = 134,
                             Area = 0.0,
                             DepartmentId = 4,
-                            Length = 16.0,
+                            Height = 3.0,
+                            Length = 13.0,
                             LocationId = 44,
-                            Number = 139,
-                            Purpose = 1,
+                            Number = 141,
+                            Purpose = 0,
                             Type = 0,
-                            Width = 6.0
+                            Volume = 0.0,
+                            Width = 13.0
                         },
                         new
                         {
                             Id = 135,
                             Area = 0.0,
                             DepartmentId = 4,
-                            Length = 10.0,
+                            Height = 3.0,
+                            Length = 12.0,
                             LocationId = 44,
-                            Number = 135,
-                            Purpose = 0,
-                            Type = 0,
-                            Width = 16.0
+                            Number = 144,
+                            Purpose = 1,
+                            Type = 1,
+                            Volume = 0.0,
+                            Width = 10.0
                         },
                         new
                         {
                             Id = 136,
                             Area = 0.0,
                             DepartmentId = 4,
-                            Length = 14.0,
+                            Height = 3.0,
+                            Length = 15.0,
                             LocationId = 44,
-                            Number = 146,
+                            Number = 160,
                             Purpose = 0,
                             Type = 0,
-                            Width = 16.0
+                            Volume = 0.0,
+                            Width = 10.0
                         },
                         new
                         {
                             Id = 137,
                             Area = 0.0,
                             DepartmentId = 4,
-                            Length = 11.0,
+                            Height = 3.0,
+                            Length = 6.0,
                             LocationId = 44,
-                            Number = 137,
+                            Number = 145,
                             Purpose = 0,
                             Type = 0,
+                            Volume = 0.0,
+                            Width = 9.0
+                        },
+                        new
+                        {
+                            Id = 138,
+                            Area = 0.0,
+                            DepartmentId = 4,
+                            Height = 3.0,
+                            Length = 17.0,
+                            LocationId = 44,
+                            Number = 135,
+                            Purpose = 0,
+                            Type = 1,
+                            Volume = 0.0,
+                            Width = 8.0
+                        },
+                        new
+                        {
+                            Id = 139,
+                            Area = 0.0,
+                            DepartmentId = 4,
+                            Height = 3.0,
+                            Length = 11.0,
+                            LocationId = 44,
+                            Number = 143,
+                            Purpose = 1,
+                            Type = 1,
+                            Volume = 0.0,
                             Width = 16.0
                         },
                         new
@@ -1273,311 +1495,293 @@ namespace EFCoreConsoleApp.Migrations
                             Id = 140,
                             Area = 0.0,
                             DepartmentId = 4,
+                            Height = 3.0,
                             Length = 20.0,
                             LocationId = 44,
-                            Number = 136,
+                            Number = 156,
                             Purpose = 0,
-                            Type = 1,
-                            Width = 9.0
+                            Type = 0,
+                            Volume = 0.0,
+                            Width = 7.0
                         },
                         new
                         {
                             Id = 141,
                             Area = 0.0,
                             DepartmentId = 4,
-                            Length = 15.0,
+                            Height = 3.0,
+                            Length = 14.0,
                             LocationId = 44,
-                            Number = 160,
+                            Number = 139,
+                            Purpose = 1,
+                            Type = 1,
+                            Volume = 0.0,
+                            Width = 6.0
+                        },
+                        new
+                        {
+                            Id = 142,
+                            Area = 0.0,
+                            DepartmentId = 4,
+                            Height = 3.0,
+                            Length = 14.0,
+                            LocationId = 44,
+                            Number = 153,
+                            Purpose = 0,
+                            Type = 0,
+                            Volume = 0.0,
+                            Width = 10.0
+                        },
+                        new
+                        {
+                            Id = 143,
+                            Area = 0.0,
+                            DepartmentId = 4,
+                            Height = 3.0,
+                            Length = 18.0,
+                            LocationId = 44,
+                            Number = 136,
                             Purpose = 0,
                             Type = 1,
-                            Width = 8.0
+                            Volume = 0.0,
+                            Width = 11.0
                         },
                         new
                         {
                             Id = 144,
                             Area = 0.0,
                             DepartmentId = 4,
-                            Length = 16.0,
+                            Height = 3.0,
+                            Length = 18.0,
                             LocationId = 44,
-                            Number = 140,
-                            Purpose = 1,
-                            Type = 1,
-                            Width = 14.0
+                            Number = 159,
+                            Purpose = 0,
+                            Type = 0,
+                            Volume = 0.0,
+                            Width = 15.0
                         },
                         new
                         {
                             Id = 145,
                             Area = 0.0,
                             DepartmentId = 4,
-                            Length = 19.0,
+                            Height = 3.0,
+                            Length = 14.0,
                             LocationId = 44,
-                            Number = 145,
-                            Purpose = 1,
+                            Number = 146,
+                            Purpose = 0,
                             Type = 0,
-                            Width = 7.0
+                            Volume = 0.0,
+                            Width = 6.0
                         },
                         new
                         {
                             Id = 146,
                             Area = 0.0,
                             DepartmentId = 4,
-                            Length = 8.0,
+                            Height = 3.0,
+                            Length = 13.0,
                             LocationId = 44,
-                            Number = 149,
+                            Number = 163,
                             Purpose = 0,
-                            Type = 1,
-                            Width = 12.0
+                            Type = 0,
+                            Volume = 0.0,
+                            Width = 10.0
                         },
                         new
                         {
                             Id = 147,
                             Area = 0.0,
                             DepartmentId = 4,
-                            Length = 8.0,
+                            Height = 3.0,
+                            Length = 15.0,
                             LocationId = 44,
-                            Number = 155,
-                            Purpose = 1,
+                            Number = 142,
+                            Purpose = 0,
                             Type = 1,
-                            Width = 16.0
+                            Volume = 0.0,
+                            Width = 12.0
                         },
                         new
                         {
                             Id = 148,
                             Area = 0.0,
                             DepartmentId = 4,
-                            Length = 14.0,
-                            LocationId = 44,
-                            Number = 133,
-                            Purpose = 1,
-                            Type = 0,
-                            Width = 6.0
-                        },
-                        new
-                        {
-                            Id = 150,
-                            Area = 0.0,
-                            DepartmentId = 4,
+                            Height = 3.0,
                             Length = 20.0,
                             LocationId = 44,
-                            Number = 138,
-                            Purpose = 0,
+                            Number = 150,
+                            Purpose = 1,
                             Type = 1,
-                            Width = 10.0
+                            Volume = 0.0,
+                            Width = 9.0
                         },
                         new
                         {
                             Id = 151,
                             Area = 0.0,
                             DepartmentId = 4,
-                            Length = 15.0,
+                            Height = 3.0,
+                            Length = 10.0,
                             LocationId = 44,
-                            Number = 157,
-                            Purpose = 1,
-                            Type = 1,
-                            Width = 7.0
+                            Number = 138,
+                            Purpose = 0,
+                            Type = 0,
+                            Volume = 0.0,
+                            Width = 11.0
                         },
                         new
                         {
-                            Id = 153,
+                            Id = 152,
                             Area = 0.0,
                             DepartmentId = 4,
-                            Length = 19.0,
+                            Height = 3.0,
+                            Length = 7.0,
                             LocationId = 44,
-                            Number = 134,
+                            Number = 162,
                             Purpose = 0,
-                            Type = 1,
-                            Width = 15.0
+                            Type = 0,
+                            Volume = 0.0,
+                            Width = 16.0
                         },
                         new
                         {
                             Id = 154,
                             Area = 0.0,
                             DepartmentId = 4,
-                            Length = 11.0,
+                            Height = 3.0,
+                            Length = 12.0,
                             LocationId = 44,
-                            Number = 147,
-                            Purpose = 1,
-                            Type = 0,
-                            Width = 13.0
+                            Number = 155,
+                            Purpose = 0,
+                            Type = 1,
+                            Volume = 0.0,
+                            Width = 14.0
                         },
                         new
                         {
                             Id = 155,
                             Area = 0.0,
                             DepartmentId = 4,
-                            Length = 13.0,
+                            Height = 3.0,
+                            Length = 15.0,
                             LocationId = 44,
-                            Number = 148,
-                            Purpose = 1,
-                            Type = 0,
-                            Width = 6.0
+                            Number = 152,
+                            Purpose = 0,
+                            Type = 1,
+                            Volume = 0.0,
+                            Width = 8.0
                         },
                         new
                         {
                             Id = 156,
                             Area = 0.0,
                             DepartmentId = 4,
-                            Length = 8.0,
-                            LocationId = 44,
-                            Number = 153,
-                            Purpose = 0,
-                            Type = 1,
-                            Width = 12.0
-                        },
-                        new
-                        {
-                            Id = 157,
-                            Area = 0.0,
-                            DepartmentId = 4,
-                            Length = 12.0,
-                            LocationId = 44,
-                            Number = 132,
-                            Purpose = 1,
-                            Type = 0,
-                            Width = 8.0
-                        },
-                        new
-                        {
-                            Id = 158,
-                            Area = 0.0,
-                            DepartmentId = 4,
-                            Length = 13.0,
-                            LocationId = 44,
-                            Number = 150,
-                            Purpose = 1,
-                            Type = 1,
-                            Width = 16.0
-                        },
-                        new
-                        {
-                            Id = 160,
-                            Area = 0.0,
-                            DepartmentId = 4,
-                            Length = 9.0,
-                            LocationId = 44,
-                            Number = 143,
-                            Purpose = 0,
-                            Type = 1,
-                            Width = 8.0
-                        },
-                        new
-                        {
-                            Id = 161,
-                            Area = 0.0,
-                            DepartmentId = 4,
+                            Height = 3.0,
                             Length = 17.0,
                             LocationId = 44,
-                            Number = 151,
-                            Purpose = 0,
+                            Number = 137,
+                            Purpose = 1,
                             Type = 0,
-                            Width = 14.0
+                            Volume = 0.0,
+                            Width = 10.0
                         },
                         new
                         {
                             Id = 162,
                             Area = 0.0,
                             DepartmentId = 4,
-                            Length = 15.0,
+                            Height = 3.0,
+                            Length = 14.0,
                             LocationId = 44,
-                            Number = 142,
-                            Purpose = 0,
-                            Type = 1,
-                            Width = 9.0
-                        },
-                        new
-                        {
-                            Id = 164,
-                            Area = 0.0,
-                            DepartmentId = 4,
-                            Length = 19.0,
-                            LocationId = 44,
-                            Number = 154,
-                            Purpose = 0,
-                            Type = 1,
-                            Width = 15.0
+                            Number = 140,
+                            Purpose = 1,
+                            Type = 0,
+                            Volume = 0.0,
+                            Width = 16.0
                         },
                         new
                         {
                             Id = 165,
                             Area = 0.0,
                             DepartmentId = 5,
-                            Length = 9.0,
+                            Height = 3.0,
+                            Length = 14.0,
                             LocationId = 55,
-                            Number = 174,
+                            Number = 171,
                             Purpose = 1,
-                            Type = 0,
-                            Width = 16.0
+                            Type = 1,
+                            Volume = 0.0,
+                            Width = 7.0
                         },
                         new
                         {
                             Id = 166,
                             Area = 0.0,
                             DepartmentId = 5,
-                            Length = 15.0,
+                            Height = 3.0,
+                            Length = 11.0,
                             LocationId = 55,
-                            Number = 178,
-                            Purpose = 0,
+                            Number = 180,
+                            Purpose = 1,
                             Type = 1,
-                            Width = 16.0
+                            Volume = 0.0,
+                            Width = 15.0
                         },
                         new
                         {
                             Id = 167,
                             Area = 0.0,
                             DepartmentId = 5,
-                            Length = 7.0,
+                            Height = 3.0,
+                            Length = 16.0,
                             LocationId = 55,
-                            Number = 175,
-                            Purpose = 0,
-                            Type = 1,
-                            Width = 6.0
+                            Number = 167,
+                            Purpose = 1,
+                            Type = 0,
+                            Volume = 0.0,
+                            Width = 9.0
                         },
                         new
                         {
                             Id = 168,
                             Area = 0.0,
                             DepartmentId = 5,
-                            Length = 16.0,
+                            Height = 3.0,
+                            Length = 17.0,
                             LocationId = 55,
-                            Number = 169,
+                            Number = 177,
                             Purpose = 0,
-                            Type = 0,
-                            Width = 11.0
+                            Type = 1,
+                            Volume = 0.0,
+                            Width = 6.0
                         },
                         new
                         {
                             Id = 169,
                             Area = 0.0,
                             DepartmentId = 5,
-                            Length = 11.0,
+                            Height = 3.0,
+                            Length = 14.0,
                             LocationId = 55,
-                            Number = 177,
-                            Purpose = 1,
+                            Number = 169,
+                            Purpose = 0,
                             Type = 0,
-                            Width = 12.0
+                            Volume = 0.0,
+                            Width = 10.0
                         },
                         new
                         {
                             Id = 170,
                             Area = 0.0,
                             DepartmentId = 5,
-                            Length = 7.0,
+                            Height = 3.0,
+                            Length = 10.0,
                             LocationId = 55,
-                            Number = 165,
+                            Number = 174,
                             Purpose = 0,
                             Type = 0,
-                            Width = 16.0
-                        },
-                        new
-                        {
-                            Id = 171,
-                            Area = 0.0,
-                            DepartmentId = 5,
-                            Length = 7.0,
-                            LocationId = 55,
-                            Number = 166,
-                            Purpose = 1,
-                            Type = 0,
+                            Volume = 0.0,
                             Width = 13.0
                         },
                         new
@@ -1585,59 +1789,69 @@ namespace EFCoreConsoleApp.Migrations
                             Id = 173,
                             Area = 0.0,
                             DepartmentId = 5,
-                            Length = 11.0,
+                            Height = 3.0,
+                            Length = 20.0,
                             LocationId = 55,
                             Number = 173,
-                            Purpose = 0,
+                            Purpose = 1,
                             Type = 1,
-                            Width = 8.0
+                            Volume = 0.0,
+                            Width = 16.0
                         },
                         new
                         {
                             Id = 175,
                             Area = 0.0,
                             DepartmentId = 5,
-                            Length = 10.0,
+                            Height = 3.0,
+                            Length = 7.0,
                             LocationId = 55,
-                            Number = 170,
-                            Purpose = 1,
+                            Number = 168,
+                            Purpose = 0,
                             Type = 0,
-                            Width = 6.0
+                            Volume = 0.0,
+                            Width = 12.0
                         },
                         new
                         {
                             Id = 176,
                             Area = 0.0,
                             DepartmentId = 5,
-                            Length = 17.0,
+                            Height = 3.0,
+                            Length = 20.0,
                             LocationId = 55,
                             Number = 179,
                             Purpose = 0,
-                            Type = 1,
-                            Width = 9.0
-                        },
-                        new
-                        {
-                            Id = 177,
-                            Area = 0.0,
-                            DepartmentId = 5,
-                            Length = 20.0,
-                            LocationId = 55,
-                            Number = 172,
-                            Purpose = 1,
                             Type = 0,
-                            Width = 16.0
+                            Volume = 0.0,
+                            Width = 7.0
                         },
                         new
                         {
                             Id = 178,
                             Area = 0.0,
                             DepartmentId = 5,
-                            Length = 19.0,
+                            Height = 3.0,
+                            Length = 9.0,
                             LocationId = 55,
-                            Number = 171,
+                            Number = 165,
                             Purpose = 0,
+                            Type = 1,
+                            Volume = 0.0,
+                            Width = 6.0
+                        },
+                        new
+                        {
+                            Id = 180,
+                            Area = 0.0,
+                            DepartmentId = 5,
+                            Height = 3.0,
+                            Length = 10.0,
+                            LocationId = 55,
+                            Number = 176,
+                            Purpose = 1,
                             Type = 0,
+                            Volume = 0.0,
                             Width = 8.0
                         });
                 });

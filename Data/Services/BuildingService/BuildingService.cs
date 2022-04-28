@@ -71,7 +71,7 @@ public class BuildingService : IBuildingService
         {
             response.ErrorMessage = building != null ? "The building already exists" : "The building name must not be shorter than 4 characters";
             response.Success = false;
-            _logger.LogError($"Error creating new building Id: {building.Id} Name: {building.Name} already exists");
+            _logger.LogError(response.ErrorMessage);
         }
         else
         {
